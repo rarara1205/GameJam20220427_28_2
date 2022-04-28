@@ -7,11 +7,12 @@ public class Timer : MonoBehaviour
 {
     private TextMeshProUGUI timeText = null;
     private float oldTime;
-    public float timeLimit;
+    private float timeLimit;
 
     // Start is called before the first frame update
     void Start()
     {
+        timeLimit = GManager.instance.timeLimit;
         GManager.instance.time = timeLimit;
         oldTime = timeLimit;
         timeText = GetComponent<TextMeshProUGUI>();

@@ -5,18 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SManager : MonoBehaviour
 {
+    public AudioClip sound;
+    AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void StartGame()
     {
-        SceneManager.LoadScene("Play");
+        audioSource.PlayOneShot(sound);
+        GManager.instance.AudioStart = true;
     }
 
-    public void RestartGame()
+    void Update()
     {
-        SceneManager.LoadScene("Title");
+        if(!audioSource.isPlaying && GManager.instance.AudioStart)
+        {
+            SceneManager.LoadScene("Play");
+            GManager.instance.AudioStart = false;
+        }
     }
 
-    public void GameOver()
-    {
-        SceneManager.LoadScene("GameOver");
-    }
 }

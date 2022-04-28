@@ -9,7 +9,7 @@ public class EffectDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        particle = GetComponent<ParticleSystem>();
+        particle = this.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
