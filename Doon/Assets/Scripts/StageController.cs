@@ -11,6 +11,7 @@ public class StageController : MonoBehaviour
     [Header("GameClear Object")] public GameObject gameClearObj;
 
     private bool retryGame = false;
+    private bool toTitle = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,21 @@ public class StageController : MonoBehaviour
         {
             gameClearObj.SetActive(true);
         }
+
+        if(toTitle)
+        {
+            GManager.instance.RetryGame();
+            SceneManager.LoadScene("Title");
+        }
     }
 
     public void Retry()
     {
         retryGame = true;
+    }
+
+    public void ToTitle()
+    {
+        toTitle = true;
     }
 }

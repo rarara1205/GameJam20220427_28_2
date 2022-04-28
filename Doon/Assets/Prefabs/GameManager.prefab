@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58d90528643cb14a94234d4f59b6e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  time: 0
+  timeLimit: 60
+  isGameOver: 0
+  isGameClear: 0
