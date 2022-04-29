@@ -7,10 +7,13 @@ public class Score : MonoBehaviour
 {
     private TextMeshProUGUI scoreText = null;
     private int oldScore = 0;
+    public AudioClip sound;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
         scoreText = GetComponent<TextMeshProUGUI>();
         scoreText.text = "Score " + GManager.instance.score;
     }
@@ -22,6 +25,7 @@ public class Score : MonoBehaviour
         {
             scoreText.text = "Score " + GManager.instance.score;
             oldScore = GManager.instance.score;
+            audioSource.PlayOneShot(sound);
         }
     }
 }

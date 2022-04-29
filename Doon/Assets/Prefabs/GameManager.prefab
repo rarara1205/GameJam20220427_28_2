@@ -49,3 +49,5 @@ MonoBehaviour:
   timeLimit: 60
   isGameOver: 0
   isGameClear: 0
+  AudioStart: 0
+  gameOverActive: 0

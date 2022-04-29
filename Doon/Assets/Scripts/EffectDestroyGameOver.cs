@@ -5,8 +5,15 @@ using UnityEngine;
 public class EffectDestroyGameOver : MonoBehaviour
 {
     private ParticleSystem particle;
+    [Header("GameOver Object")] public GameObject gameOverObj;
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        GManager.instance.isGameOver = true;
+    }
+
     void Start()
     {
         particle = GetComponent<ParticleSystem>();
@@ -17,8 +24,8 @@ public class EffectDestroyGameOver : MonoBehaviour
     {
         if (particle.isPlaying == false)
         {
+            GManager.instance.gameOverActive = true;
             Destroy(gameObject);
-            GManager.instance.isGameOver = true;
         }
     }
 }

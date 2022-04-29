@@ -24,11 +24,6 @@ public class StageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GManager.instance.isGameOver)
-        {
-            gameOverObj.SetActive(true);
-        }
-
         if (retryGame)
         {
             GManager.instance.RetryGame();
@@ -45,6 +40,12 @@ public class StageController : MonoBehaviour
             GManager.instance.RetryGame();
             SceneManager.LoadScene("Title");
         }
+
+        if(GManager.instance.gameOverActive)
+        {
+            gameOverObj.SetActive(true);
+        }
+
     }
 
     public void Retry()
@@ -56,4 +57,7 @@ public class StageController : MonoBehaviour
     {
         toTitle = true;
     }
+
+    
+
 }

@@ -30,10 +30,13 @@ public class Timer : MonoBehaviour
             oldTime = GManager.instance.time;
         }
 
-        if(GManager.instance.time <= 0)
+        if(GManager.instance.time <= 0 && !GManager.instance.isGameOver)
         {
             GManager.instance.isGameClear = true;
             Destroy(this.gameObject);
         }
+
+        if (GManager.instance.isGameOver) Destroy(this.gameObject);
+
     }
 }

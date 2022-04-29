@@ -26,8 +26,5 @@ public class ScoreItem : MonoBehaviour
             Destroy(this.gameObject);
             this.time = 0f;
         }
-
-
-
     }
 }
