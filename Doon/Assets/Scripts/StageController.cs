@@ -12,6 +12,7 @@ public class StageController : MonoBehaviour
 
     private bool retryGame = false;
     private bool toTitle = false;
+    private bool highScoreActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class StageController : MonoBehaviour
         gameOverObj.SetActive(false);
         gameClearObj.SetActive(false);
         Instantiate(playerObj, startPoint.transform.position, playerObj.transform.rotation);
+        highScoreActive = false;
     }
 
     // Update is called once per frame
@@ -33,6 +35,11 @@ public class StageController : MonoBehaviour
         if (GManager.instance.isGameClear)
         {
             gameClearObj.SetActive(true);
+            if (!highScoreActive)
+            {
+                naichilab.RankingLoader.Instance.SendScoreAndShowRanking(GManager.instance.score);
+                highScoreActive=true;
+            }
         }
 
         if(toTitle)
@@ -51,6 +58,7 @@ public class StageController : MonoBehaviour
     public void Retry()
     {
         retryGame = true;
+        highScoreActive = false;
     }
 
     public void ToTitle()
